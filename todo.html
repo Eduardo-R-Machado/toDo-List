@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <main>
+        <section class="wrp-title">
+            <h1>ToDo List</h1>
+        </section>
+
+        <section class="wrp-box-todos">
+
+            <header>
+                <div class="button todos active">
+                    <div class="box-icon-list">
+                        <div class="row">
+                            <div class="rounded"></div> <div class="line"></div>
+                        </div>
+                        <div class="row">
+                            <div class="rounded"></div> <div class="line"></div>
+                        </div>
+                        <div class="row">
+                            <div class="rounded"></div> <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button tasks">
+                    <div class="box-icon-tasks">
+                            <div class="wrp-gramps">
+                                <div class="gramp"></div><div class="gramp"></div>
+                            </div>
+                        <div class="border">
+                            <div class="check"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="wrp-list-todos">
+                <div class="form-group">
+                    <input type="checkbox" class="checkbox"  >
+                    <label >Lorem ipsum dolor sit amet, </label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class="checkbox"  >
+                    <label >Lorem ipsum dolor sit amet, .</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class="checkbox"  >
+                    <label >Lorem ipsum dolor sit amet, </label>
+                </div>
+            </div>
+
+            <div class="wrp-button-post">
+                <div onclick="openModal()" class="buttonOrange">
+                    <span>+</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="modalInsert">
+
+        </div>
+    </main>
+
+    <div class="models">
+
+        <div id="modalContent" class="wrp-modal">
+            <div id="modal" class="modal">
+                <div class="wrp-close">
+                    <span onclick="closeModal()" id="closeModal">X</span>
+                </div>
+              <h2>Adicionar Tarefa</h2>
+                <input type="text" placeholder="Nova tarefa" id="novaTarefa">
+                <div class="wrp-btn-enviar">
+                    <div id="buttonEnviarNovaTarefa" class="btn-enviar">
+                       <span>Enviar</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script src="todo.js"></script>
+</html>
