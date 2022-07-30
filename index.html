@@ -12,27 +12,66 @@
     <main class="content-login-register">
 
             <div class="left-box">
+                <div class="wrp-icon">
+                    <div class="box large"></div>
+                    <div class="box medium"></div>
+                    <div class="box small"></div>
+                </div>
                 <h2>
                     To-Do List
                 </h2>
                 <h4>Template de To-do list (Lista de Tarefas). Organize, priorize e melhore suas operações de trabalho.</h4>
-                <div class="wrp-icon">
-                    <img src="logoTodo.png" alt="">
-                </div>
+
+
             </div>
 
             <div class="right-box">
-                <div class="buttons-login-regsiter">
-                    <button class="btn-login">
-                        Login
-                    </button>
-                    <button class="btn-register">
-                        Register
-                    </button>
+
+                 <div class="wrp-login">
+                    <h2>Bem vindo de volta!</h2>
+                    <h4>Fazer login</h4>
+                     <form>
+                         <div class="form-field email">
+                             <input type="email" name="email" id="emailLogin" placeholder="Digite o email cadastrado"/>
+                         </div>
+
+                         <div class="form-field senha">
+                             <input type="password" name="password" id="passwordLogin" placeholder="Digite sua senha"/>
+                         </div>
+
+                         <div class="wrp-btn-login">
+                             <button type="button" class="solid entrar" id="login-button" onclick="login()"> <span>Entrar</span></button>
+                         </div>
+                     </form>
+                     <p>Ainda não se cadastrou?</p>
+                     <button onclick="activeForm()" class="small-btn cadastrar-se">Cadastre-se</button>
                 </div>
+
+                <div class="wrp-register">
+                    <h2>Cadastre-se</h2>
+                    <h4>Para começar a usar o To-Do List</h4>
+                    <form>
+                        <div class="form-field email">
+                            <input type="email" name="email" id="emailCadastro" placeholder="Digite seu melhor email"/>
+                        </div>
+
+                        <div class="form-field senha">
+                            <input type="password" name="password" id="passwordCadastro" placeholder="Digite sua senha"/>
+                        </div>
+
+                        <div class="wrp-btn-cadastro">
+                            <button type="button" class="solid cadastrar" id="cadastro-button" onclick="register()"> <span>Cadastrar</span></button>
+                        </div>
+                    </form>
+                    <p>Já tem uma conta?</p>
+                    <button onclick="activeForm()" class="small-btn entrar">Entrar</button>
             </div>
+        </div>
     </main>
 </body>
 
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+<script src="firebase-init.js"></script>
 <script src="index.js"></script>
 </html>
