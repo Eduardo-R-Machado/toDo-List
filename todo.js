@@ -36,10 +36,32 @@ function findTodos(){
         }   )
 }
 
-findTodos();
+//function que  faz um forEach nos todos e use o form-group para criar os todos
+function createTodos(){
+    firebase.firestore()
+        .collection('Todos')
+        .get()
+        .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+                let todo = doc.data();
+                let todoDiv = document.createElement('div');
+                todoDiv.classList.add('form-group');
+                todoDiv.innerHTML = `
+                <div class="form-group">
+                    <input class="checkbox" type="checkbox" value="" id="defaultCheck1">
+                    <label >
+                        ${todo.todo}
+                    </label>
+                    
+                </div>
+                `;
+                document.querySelector('.wrp-list-todos').appendChild(todoDiv);
+            }   )
+        }   )
+}
 
 
-
+createTodos();
 
 
 
