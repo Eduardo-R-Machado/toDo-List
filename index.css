@@ -234,3 +234,22 @@ form .form-field input{
 ::-webkit-scrollbar-thumb {
     background: transparent;
 }
+
+
+@media (max-width: 768px){
+ .content-login-register{
+     flex-direction: column;
+        align-items: center;
+        justify-content: center;
+ }
+ .right-box,.left-box{
+     width: 100%;
+ }
+ .right-box{
+     border-radius: 0px 0px 10px 10px;
+ }
+ .left-box{
+     border-radius: 10px 10px 0px 0px;
+ }
+
+}
