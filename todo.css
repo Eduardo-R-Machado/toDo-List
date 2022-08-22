@@ -199,6 +199,8 @@ header > .button.active{
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 3rem;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 .wrp-list-todos .list-todos{
@@ -422,4 +424,19 @@ header > .button.active{
 
 ::-webkit-scrollbar-thumb {
     background: transparent;
+}
+
+.razurado{
+    text-decoration: line-through;
+}
+
+@media (max-width: 768px){
+    .wrp-box-todos{
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

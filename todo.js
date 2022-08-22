@@ -39,7 +39,10 @@ function findTodos(user){
         .orderBy('checked')
         .get()
         .then(snapshot => {
-                const todos = snapshot.docs.map(doc => doc.data());
+                const todos = snapshot.docs.map(doc =>({
+                    ...doc.data(),
+                    uid: doc.id
+                }));
                 addTodosToScreen(todos);
             })
         .catch(error => {
@@ -67,8 +70,31 @@ function addTodosToScreen(todos){
 
         orderedList.appendChild(formGroup);
 
-        formGroup.addEventListener('click', () => {
-            findTodosByUid(todo.id);
+        // se o checkbox estiver marcado, o label fica com a atributo checked
+        if (todo.checked) {
+            checkbox.setAttribute('checked', true);
+            label.classList.add('razurado');
+            label.style.opacity = '0.5';
+        } else{
+            checkbox.removeAttribute('checked');
+
+
+        }
+
+        checkbox.addEventListener('click', () => {
+           let uidTodo = todo.uid;
+          firebase.firestore()
+                .collection('Todos')
+                .doc(uidTodo)
+                .update({
+                    checked: !todo.checked
+                }).then(() => {
+                    reloadTodos();
+
+                }   ).catch(error => {
+                    console.log(error);
+                    alert('Erro ao atualizar tarefa');
+                } );
         } );
     });
 }
@@ -81,9 +107,9 @@ function saveTodo(){
 
 function createTodo(){
     return {
+        todoUid:  document.querySelector('#novaTarefa').value + firebase.auth().currentUser.uid,
         todo: document.querySelector('#novaTarefa').value,
         checked: false,
-        indexTodo: indexTodo(index),
         user: {
             uid: firebase.auth().currentUser.uid,
         }
@@ -100,24 +126,8 @@ function save(todo) {
             reloadTodos();
         })
         .catch(error => {
-
             console.log(error);
             alert('Erro ao salvar tarefa');
-        }   );
-}
-
-function update(todo) {
-    firebase.firestore()
-        .collection('Todos')
-        .doc(getTodoUid())
-        .update(todo)
-        .then(() => {
-            alert('Tarefa atualizada com sucesso');
-            closeModal();
-            reloadTodos();
-        }).catch(error => {
-            console.log(error);
-            alert('Erro ao atualizar tarefa');
         }   );
 }
 
@@ -126,14 +136,4 @@ function reloadTodos() {
     orderedList.innerHTML = '';
     document.querySelector('#novaTarefa').value = '';
     findTodos(firebase.auth().currentUser);
-}
-
-function indexTodo() {
-    firebase.firestore()
-        .collection('Todos')
-        .get()
-        .then(snapshot => {
-            const todos = snapshot.docs.map(doc => doc.data());
-            let index = todos.length;
-        } )
 }
