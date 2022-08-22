@@ -8,6 +8,7 @@ body{
     align-items: center;
     justify-content: center;
     padding-bottom: 10rem;
+    min-height: 100vh;
 }
 
 .content-login-register{
@@ -101,7 +102,6 @@ body{
 
 .right-box {
     width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
