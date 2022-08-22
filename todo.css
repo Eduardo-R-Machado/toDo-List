@@ -2,9 +2,11 @@
 body{
     overflow-x:hidden;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: rgb(253,192,194);
     background: linear-gradient(132deg, rgba(253,192,194,1) 16%, rgba(155,113,201,1) 86%);
+    margin-bottom: 10rem;
+    min-height: 100vh;
 }
 
 main{
